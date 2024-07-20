@@ -1,0 +1,62 @@
+
+body > .loader {
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   background-color: #222;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   top: 0;
+   transition: opacity 0.5s;
+   transition-behavior: allow-discrete;
+   z-index: 1000;
+
+   & .st-fallingLinesloader {
+      width: 2.75rem;
+      height: 3rem;
+   }
+}
+
+
+.loader.fade-out {
+   opacity: 0;
+}
+
+
+
+.st-fallingLinesloader {
+   --_lineThickness: var(--stp-line-thickness, 10%);
+
+   width: 60px;
+   height: 60px;
+   background: linear-gradient(#0000 calc(1 * 160% / 6),
+         #fff 0 calc(3 * 115% / 6),
+         #0000 0),
+      linear-gradient(#0000 calc(2 * 110% / 6),
+         #fff 0 calc(4 * 110% / 6),
+         #0000 0),
+      linear-gradient(#0000 calc(3 * 100% / 6),
+         #fff 0 calc(5 * 107.6% / 6),
+         #0000 0),
+      linear-gradient(#0000 calc(2 * 0% / 6), #fff 0 calc(4 * 22% / 6), #0000 0);
+   background-size: var(--_lineThickness) 400%;
+   background-repeat: no-repeat;
+   background-color: none;
+
+   &:not(.sta-freezeLoader) {
+      animation: fallingLines32839 1s infinite linear;
+   }
+}
+
+
+
+@keyframes fallingLines32839 {
+   0% {
+      background-position: 0% 100%, 50% 100%, 100% 100%, 100% 100%;
+   }
+
+   100% {
+      background-position: 0% 0%, 50% 0%, 100% 0%, 100% 0%;
+   }
+}

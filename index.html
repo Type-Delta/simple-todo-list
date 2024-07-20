@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <!-- Non-prefixed version -->
+   <!-- <link rel="preload" href="./src/styles/preload.css" as="style" />
+   <link rel="stylesheet" href="./src/styles/preload.css" />
+   <link rel="stylesheet" href="./src/styles/index.css">
+    <script src="./src/helper/gsap.min.js"></script>
+   <script src="./src/helper/Tools.js"></script>
+   <script src="./src/helper/Griseo.js"></script>
+   <script defer src="./src/index.js"></script> -->
+
+   <!-- Prefixed version -->
+   <link rel="preload" href="./src/styles/prefixed/preload.css" as="style" />
+   <link rel="stylesheet" href="./src/styles/prefixed/preload.css" />
+   <link rel="stylesheet" href="./src/styles/prefixed/index.css">
+    <script src="./src/helper/gsap.min.js"></script>
+   <script src="./src/helper/Tools.js"></script>
+   <script src="./src/helper/Griseo.js"></script>
+   <script defer src="./src/index.js"></script>
+   <title>Simple Todo List</title>
+</head>
+<body>
+   <div class="loader">
+      <div class="st-fallingLinesloader" style="--stp-line-thickness: 15%;"></div>
+   </div>
+   <nav>
+      <h1 class="title">Simple <span class="st-stroke">Todo</span> List</h1>
+   </nav>
+   <div class="container">
+      <div class="alignLeft">
+         <div class="completedList">
+            <div class="listHeader">
+               <h2 class="title">
+                  <text class="titleTextContent">Completed</text>
+                  <sup>
+                     <button class="clearCompleted st-simpleTooltip" id="clearCompletedBtn">
+                        clear
+                        <div class="tooltip">clear completed</div>
+                     </button>
+                  </sup>
+               </h2>
+            </div>
+            <div class="listContent">
+               <label class="listItem placeholder">
+                  <div class="text">Nothing yet.</div>
+               </label>
+            </div>
+         </div>
+      </div>
+      <div class="alignRight">
+         <div class="list">
+            <div class="listHeader">
+               <h2 class="title">
+                  <text class="titleTextContent">My Todo List</text>
+                  <sup>
+                     <button class="editTitle st-simpleTooltip" id="editTitleBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-120v-71l216-216 71 71-216 216h-71ZM120-330v-60h300v60H120Zm690-49-71-71 29-29q8-8 21-8t21 8l29 29q8 8 8 21t-8 21l-29 29ZM120-495v-60h470v60H120Zm0-165v-60h470v60H120Z"/></svg>
+                        <div class="tooltip">edit title</div>
+                     </button>
+                  </sup>
+               </h2>
+            </div>
+            <div class="listContent">
+               <label class="listItem placeholder" for="text-input">
+                  <div class="text-input" id="text-input">Click to Add Item</div>
+               </label>
+            </div>
+         </div>
+      </div>
+
+   </div>
+   <footer>
+      <p>by <a href="https://github.com/Type-Delta">Type-Delta</a> • <i>Cookies utilized by this site remain exclusively on your device.</i></p>
+   </footer>
+</body>
+</html>

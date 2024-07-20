@@ -1,0 +1,254 @@
+/*///////////////////// CSS Reset ///////////////////////*/
+*,
+::before,
+::after {
+  /* Prevent padding and border from affecting element width. */
+  box-sizing: border-box;
+  /* Prevent padding and border from affecting element width. */
+  border-width: 0;
+  border-style: solid;
+  /* change a default border color ot something easier to the eyes */
+  border-color: #ceddc4;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+:host {
+  /* Use a consistent sensible line-height in all browsers. */
+  line-height: 1.5;
+  /* Use a consistent sensible line-height in all browsers. */
+  -webkit-text-size-adjust: 100%;
+  /* Use a more readable tab size. */
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+     tab-size: 4;
+  /* Use the user's configured `sans` font-family by default. */
+  font-family: "popins", "Inter";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  /* Disable tap highlights on iOS */
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  /* Remove the margin in all browsers. */
+  margin: 0;
+  /* Inherit line-height from `html` so users can set them as a class directly on the `html` element. */
+  line-height: inherit;
+}
+
+hr {
+  /* Add the correct height in Firefox. */
+  height: 0;
+  /* Correct the inheritance of border color in Firefox. */
+  color: inherit;
+  /* Correct the inheritance of border color in Firefox. */
+  border-top-width: 1px;
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp, pre {
+  /* Use the user's configured `mono` font-family by default. */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
+
+table {
+  /* Remove text indentation from table contents in Chrome and Safari. */
+  text-indent: 0;
+  /* Remove text indentation from table contents in Chrome and Safari. */
+  border-color: inherit;
+  /* Remove gaps between table borders by default. */
+  border-collapse: collapse;
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  /* Correct the inability to style clickable types in iOS and Safari. */
+  -webkit-appearance: button;
+  /* Remove default button styles. */
+  background-color: transparent;
+  background-image: none;
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+
+[type='search'] {
+  /* Correct the odd appearance in Chrome and Safari. */
+  -webkit-appearance: textfield;
+  /* Correct the outline style in Safari. */
+  outline-offset: -2px;
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  /* Correct the inability to style clickable types in iOS and Safari. */
+  -webkit-appearance: button;
+  /* Change font properties to `inherit` in Safari. */
+  font: inherit;
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+summary {
+  display: list-item;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  /* Reset the default placeholder opacity in Firefox. */
+  opacity: 1;
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+}
+
+/*
+Set the default cursor for buttons.
+*/
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  /* Make replaced elements `display: block` by default. */
+  display: block;
+  /* Add `vertical-align: middle` to align replaced elements more sensibly by default. This can trigger a poorly considered lint error in some tools but is included by design. */
+  vertical-align: middle;
+}
+
+img,
+video {
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  vertical-align: middle;
+  /* Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. */
+  height: auto;
+  max-width: 100%;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden] {
+  display: none !important;
+}
+
+textarea {
+  outline: none;
+  resize: none;
+}
+
+*[contenteditable] {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input:disabled,
+button:disabled {
+  cursor: not-allowed;
+}
