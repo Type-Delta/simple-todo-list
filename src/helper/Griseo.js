@@ -558,7 +558,7 @@ const Griseo = {
 
    /**
     * @typedef {Object} CookieOptions
-    * @property {?number} expires cookie expiration time in minutes (default to 400 days)
+    * @property {?number} expires cookie expiration time (default to 400 days)
     * @property {?string} path cookie path (default to '/')
     * @property {'days'|'hours'|'minutes'} [timeUnit] time unit for `expires` (default to 'minutes')
     */
@@ -600,7 +600,6 @@ const Griseo = {
       let { expires = -1, path = '/', timeUnit = 'minutes' } = options;
 
       value = encodeURIComponent(value);
-      console.log(value);
 
       switch(timeUnit){
          case 'days': expires *= 24*60; break;

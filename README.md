@@ -32,5 +32,5 @@ maybe you would learn a thing or two from it.
 
 you can open `index.html` directly from the file system or use a local server to serve the files.
 
-if you have Visual Studio Code, you can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension to serve the files.
+if you have Visual Studio Code, you can use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension instead (recommended).
 

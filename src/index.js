@@ -54,7 +54,6 @@ keyboard.catch('Enter', (ev, activeKeys) => {
 });
 
 keyboard.catch('Esc', () => {
-   console.log('esc')
    if(itemDraging) return false;
 
    const activeNode = document.activeElement;
