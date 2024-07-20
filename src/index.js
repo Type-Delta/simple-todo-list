@@ -24,7 +24,7 @@ let lastTitleContent = titleContent?.textContent;
 /**
  * @type {HTMLElement} the item that is being dragged
  */
-let itemDraging = null;
+let draggedItem = null;
 let shadowItem = null;
 let isMouseOnTodoWhileDragging = false;
 
@@ -33,7 +33,7 @@ let isMouseOnTodoWhileDragging = false;
 
 ////////////////////  EVENT LISTENERS  ////////////////////
 keyboard.catch('Enter', (ev, activeKeys) => {
-   if(itemDraging) return false;
+   if(draggedItem) return false;
 
    const activeNode = document.activeElement;
    if(!activeNode) return false;
@@ -54,7 +54,7 @@ keyboard.catch('Enter', (ev, activeKeys) => {
 });
 
 keyboard.catch('Esc', () => {
-   if(itemDraging) return false;
+   if(draggedItem) return false;
 
    const activeNode = document.activeElement;
    if(!activeNode) return false;
@@ -72,7 +72,7 @@ keyboard.catch('Esc', () => {
 });
 
 document.addEventListener('mouseup', (ev) => {
-   if(itemDraging){
+   if(draggedItem){
       if(isMouseOnTodoWhileDragging){
          dragComplete();
       }else dragTerminate();
@@ -80,7 +80,7 @@ document.addEventListener('mouseup', (ev) => {
 });
 
 document.addEventListener('mousemove', (ev) => {
-   if(!itemDraging||!ev.target) return;
+   if(!draggedItem||!ev.target) return;
 
    handleItemDragging(ev);
 });
@@ -151,10 +151,10 @@ function addNewItem(){
 
    if(gsap){
       /* LINK: @ftalkwd
-       * some elements are required to break the overflow:hidden of the .listContent
+       * some elements need to break the overflow:hidden of the .listContent
        * however, the animation will not work if the overflow:hidden is active
-       * so, we add a class to the list to temporarily set the overflow constraint
-       * (plus, those elements doesn't need to be visible at this time)
+       * so, we add a class to temporarily set overflow:hidden when animating
+       * (those elements doesn't need to be visible at this time)
       */
       todoList.classList.add('overflowClip');
 
@@ -260,7 +260,7 @@ function createItem(){
       initiateDrag(item, ev);
    });
 
-   setTimeout(()=> {
+   setTimeout(() => {
       _griseo.onClickOutside(item, () => {
          if(textInput.textContent.trim() === '')
             removeSelf.call(item);
@@ -423,7 +423,7 @@ function removeSelf(){
 
 
 /**
- * set the item (`this`) as completed and remove it
+ * set item (`this`) as completed and remove it
  */
 function setCompleteSelf(){
    if(!this.classList.contains('complete')) return;
@@ -478,12 +478,12 @@ function clearCompleted(){
 }
 
 /**
- * start the drag action for the item
+ * start drag action for the item
  * @param {HTMLElement} item
  * @param {MouseEvent} ev
  */
 function initiateDrag(item, ev){
-   itemDraging = item;
+   draggedItem = item;
 
    const itemDraggingIndex = [...todoList.children].indexOf(item);
    shadowItem = item.cloneNode(false);
@@ -504,15 +504,15 @@ function initiateDrag(item, ev){
 
 
 /**
- * terminate the drag action in the case that the drag is canceled
+ * terminate drag action in the case that the drag is canceled
  * or completed (called after the `dragComplete()`)
  */
 function dragTerminate(){
-   if(!itemDraging) return;
+   if(!draggedItem) return;
 
-   itemDraging.style = null;
-   itemDraging.classList.remove('dragging');
-   itemDraging = null;
+   draggedItem.style = null;
+   draggedItem.classList.remove('dragging');
+   draggedItem = null;
 
    shadowItem.remove();
    shadowItem = null;
@@ -523,16 +523,16 @@ function dragTerminate(){
 
 
 /**
- * finalize the drag action in the case that the drag is successful
+ * finalize drag action in the case that the drag is successful
  * (user dropped the item in a valid position)
  */
 function dragComplete(){
-   if(!itemDraging) return;
+   if(!draggedItem) return;
 
    let shadowIndex = [...todoList.children].indexOf(shadowItem);
 
-   todoList.removeChild(itemDraging);
-   _griseo.insertElementAt(shadowIndex, todoList, itemDraging);
+   todoList.removeChild(draggedItem);
+   _griseo.insertElementAt(shadowIndex, todoList, draggedItem);
    dragTerminate();
 }
 
@@ -544,25 +544,25 @@ function dragComplete(){
  */
 function handleItemDragging(ev){
    const todoRect = todoList.getBoundingClientRect();
-   itemDraging.style.top = `${(ev.clientY - todoRect.top).toFixed(6)}px`;
+   draggedItem.style.top = `${(ev.clientY - todoRect.top).toFixed(6)}px`;
 
    if(_griseo.isPosInside(
       ev.clientX, ev.clientY,
       todoList.getBoundingClientRect()
    )){
       isMouseOnTodoWhileDragging = true;
-      itemDraging.classList.remove('invalidPos');
+      draggedItem.classList.remove('invalidPos');
    }
    else{
       isMouseOnTodoWhileDragging = false;
-      itemDraging.classList.add('invalidPos');
+      draggedItem.classList.add('invalidPos');
    }
 
    const listChildren = [...todoList.children];
    let targetItem;
    for(const child of listChildren){
       if(child.classList.contains('placeholder')) continue;
-      if(child.isSameNode(itemDraging)) continue;
+      if(child.isSameNode(draggedItem)) continue;
 
       if(_griseo.isPosInside(
          ev.clientX, ev.clientY,
